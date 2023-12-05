@@ -1,0 +1,72 @@
+* {
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+}
+
+.content {
+  padding: 0.5rem;
+}
+
+.lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.numero {
+  color: #5f5f5f;
+  text-align: right;
+  font-size: 0.87rem;
+  font-weight: bold;
+}
+
+.nome {
+  color: #f4f4f4;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.detalhes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tipos {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.imagem-pokemon {
+  max-width: 100%;
+  width: 75px;
+  align-self: flex-end;
+}
+
+@media screen and (max-width: 360px) {
+  .lista {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .lista {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .content {
+    max-width: 992px;
+    height: auto;
+    margin: 1rem auto;
+  }
+  .lista {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
