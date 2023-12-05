@@ -12,7 +12,33 @@ function converterPokemonParaHtml(pokemon) {
 }
 
 const pokemonLista = document.getElementById("pokemonLista");
+const carregarMais = document.getElementById("botaoCarregarMais");
 
-pokeapi.getPokemons().then((pokemons = []) => {
-  pokemonLista.innerHTML += pokemons.map(converterPokemonParaHtml).join("");
-});
+let offset = 0;
+const limit = 12;
+const maximoRegistros = 151;
+
+function carregarPokemons (offset, limit) {
+  pokeapi.getPokemons(offset, limit).then((pokemons = []) => {
+    pokemonLista.innerHTML += pokemons.map(converterPokemonParaHtml).join("");
+  });
+}
+
+carregarPokemons(offset, limit);
+
+carregarMais.addEventListener('click', () => {
+  offset += limit;
+
+  const qtdRegistrosProxPagina = offset + limit;
+
+  if (qtdRegistrosProxPagina >= maximoRegistros) {
+    const novoLimite = maximoRegistros - offset;
+    carregarPokemons(offset, novoLimite);
+
+    carregarMais.parentElement.removeChild(carregarMais);
+  } else {
+    carregarPokemons(limit, offset);
+  }
+
+  
+})
