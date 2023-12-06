@@ -20,7 +20,9 @@ const maximoRegistros = 151;
 
 function carregarPokemons (offset, limit) {
   pokeapi.getPokemons(offset, limit).then((pokemons = []) => {
-    pokemonLista.innerHTML += pokemons.map(converterPokemonParaHtml).join("");
+    novoHtml = pokemons.map(converterPokemonParaHtml).join("")
+
+    pokemonLista.innerHTML += novoHtml;
   });
 }
 
@@ -37,7 +39,7 @@ carregarMais.addEventListener('click', () => {
 
     carregarMais.parentElement.removeChild(carregarMais);
   } else {
-    carregarPokemons(limit, offset);
+    carregarPokemons(offset, limit);
   }
 
   
